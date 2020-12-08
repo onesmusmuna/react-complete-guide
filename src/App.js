@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Person from "./components/Person";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    persons: [
+      {id: 1, name: "John", age: 21},
+      {id: 2, name: "Max", age: 15},
+      {id: 3, name: "Jane", age: 22}
+    ],
+    isPersonsVisible: false
+  };
+
+  togglePersonHandler = () => {
+    this.setState((state) => {
+      return {...state, isPersonsVisible: !state.isPersonsVisible};
+    });
+  };
+
+  render() {
+    let persons = null;
+
+    if (this.state.isPersonsVisible) {
+      persons = (
+        <React.Fragment>
+          {this.state.persons.map((person) => {
+            return <Person key={person.id} name={person.name} age={person.age} />;
+          })}
+        </React.Fragment>
+      );
+    }
+
+    return (
+      <React.Fragment>
+        <button onClick={this.togglePersonHandler} className="btn">
+          Show | hide
+        </button>
+
+        {persons}
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;

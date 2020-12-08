@@ -1,0 +1,19 @@
+.person {
+  display: block;
+  margin: 40px 30%;
+  text-align: center;
+  background: rgba(64, 13, 88, 0.267);
+  border-radius: 10px;
+}
+
+.btn {
+  margin: 30px 45%;
+  padding: 15px;
+  border: none;
+  background: rgba(12, 198, 223, 0.5);
+  border-radius: 10px;
+}
+
+.btn:active {
+  background-color: rgba(12, 223, 30, 0.87);
+}
