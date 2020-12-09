@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import "./form.css";
 
 class Form extends Component {
@@ -6,16 +6,19 @@ class Form extends Component {
     super();
     this.state = {
       firstName: "",
-      lastName: ""
+      lastName: "",
+      isFriendly: false,
+      gender: "",
+      favColor: "blue"
     };
   }
 
   handleChange = (event) => {
-    const {name, value} = event.target;
+    const {name, value, type, checked} = event.target;
 
-    this.setState({
-      [name]: value
-    });
+    type === "checkbox"
+      ? this.setState({[name]: checked})
+      : this.setState({[name]: value});
   };
 
   handleSubmit = (event) => {
@@ -23,8 +26,15 @@ class Form extends Component {
   };
 
   render() {
+    console.log(`First Name: ${this.state.firstName}`);
+    console.log(`Last Name: ${this.state.lastName}`);
+    console.log(`Is Friendly: ${this.state.isFriendly}`);
+    console.log(`Gender: ${this.state.gender}`);
+    console.log(`Favorite color: ${this.state.favColor}`);
+    console.log(`\n\n\n\n\n\n\n`);
+
     return (
-      <div>
+      <Fragment>
         <form onSubmit={this.handleSubmit}>
           <label>First Name</label>
           <input
@@ -42,12 +52,69 @@ class Form extends Component {
             onChange={this.handleChange}
           />
 
-          <button type="submit">Submit</button>
-        </form>
+          <label>Is Friendly</label>
+          <input
+            type="checkbox"
+            name="isFriendly"
+            checked={this.state.isFriendly}
+            onChange={this.handleChange}
+            className="checkbox"
+          />
 
-        <h1>First Name: {this.state.firstName}</h1>
-        <h1>Last Name: {this.state.lastName}</h1>
-      </div>
+          <label>Gender</label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              checked={this.state.gender === "male"}
+              onChange={this.handleChange}
+            />
+            Male
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              checked={this.state.gender === "female"}
+              onChange={this.handleChange}
+            />
+            Female
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="other"
+              checked={this.state.gender === "other"}
+              onChange={this.handleChange}
+            />
+            Other
+          </label>
+
+          <label>Favorite color</label>
+          <select
+            name="favColor"
+            value={this.state.favColor}
+            onChange={this.handleChange}
+          >
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="green">Green</option>
+          </select>
+
+          <button type="submit">Submit</button>
+
+          {/*
+          This is how we use textare 
+          <textarea value={} /> 
+          
+          */}
+        </form>
+      </Fragment>
     );
   }
 }
