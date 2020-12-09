@@ -1,0 +1,18 @@
+.counter {
+  text-align: center;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 25px;
+  background: rgba(238, 240, 240, 0.555);
+}
+
+button {
+  font-size: larger;
+  padding: 10px 30px;
+  margin: 10px;
+}
+
+h1 {
+  font-size: 40px;
+}

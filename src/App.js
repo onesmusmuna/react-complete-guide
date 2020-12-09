@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import Counter from "./components/counter/Counter.js";
+import Counter from "./components/color/Counter.js";
 
 export default function App() {
   return (

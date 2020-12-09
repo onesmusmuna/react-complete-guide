@@ -19,3 +19,24 @@ First item of the array is the state & second item is a function to update the s
 ```JS
 const [state, setState] = usestate(initialState);
 ```
+
+---
+
+### useEffect
+
+It allows us to produce side effects in our component.
+Side Effects: Anything that reaches outside of the component to do anything.
+eg
+
+> API requests to our backend service.
+> Calls to our authentication service.
+> Error tracking calls to Sentry. etc
+
+`useEffect` takes in 2 parameters.
+
+- first, A callback funtion to write our logic
+- second, An array. we put in the variables to be watched for change, and when the variable changes `useEffect` will run again.
+
+By default, effects run after every completed render, but you can choose to fire them only when certain values have changed. To implement this, pass a second argument to useEffect that is the array of values that the effect depends on.
+
+If we put an empty array, the effect will not run again. Until we refresh the app.
