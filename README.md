@@ -39,4 +39,6 @@ eg
 
 By default, effects run after every completed render, but you can choose to fire them only when certain values have changed. To implement this, pass a second argument to useEffect that is the array of values that the effect depends on.
 
-If we put an empty array, the effect will not run again. Until we refresh the app.
+If we put an empty array, the effect will not run again. Until we refresh the app. Aka `componentDidMount()`.
+
+For cleal-up work in useEffect, We return a function in the function we pass in the useEffect, to do all the clean up work. In class component we used `componentWillUnmount()`
